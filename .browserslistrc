@@ -1,0 +1,10 @@
+[development]
+last 3 chrome versions
+last 1 firefox version
+last 2 safari versions
+
+[production]
+defaults
+Firefox >= 45
+Chrome >= 49
+Safari >= 10.1

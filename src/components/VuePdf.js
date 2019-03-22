@@ -30,9 +30,12 @@ export default {
     },
     async init() {
       try {
+        this.$emit('status', 'Initializing PDF viewer...')
+        this.$emit('loading', true)
         await externalScriptLoader.ensureScriptIsLoaded('https://unpkg.com/pdfjs-dist@latest/build/pdf.min.js')
         this.loadFile()
       } catch (e) {
+        this.$emit('error', { message: 'Error during initializing PDF viewer', e })
         console.error('Failure during loading PDF.js:', e)
       }
     },
@@ -51,8 +54,11 @@ export default {
       this.cleanup()
       if (!this.src) return
       try {
+        this.$emit('loading', true)
+        this.$emit('status', 'Downloading document...')
         const loadingTask = window.pdfjsLib.getDocument(this.src)
         this._pdf = await loadingTask.promise
+        this.$emit('status', 'Rendering document...')
         const pageNumber = 1
         this._page = await this._pdf.getPage(pageNumber)
 
@@ -65,13 +71,17 @@ export default {
         const canvas = this.$refs.canvas
         canvas.height = scaledViewport.height
         canvas.width = scaledViewport.width
-        this._page.render({
+        const renderTask = this._page.render({
           canvasContext: canvas.getContext('2d'),
           viewport: scaledViewport,
         })
+        await renderTask.promise
+        this.$emit('status', 'Render complete!')
       } catch (e) {
+        this.$emit('error', { message: 'Error during displaying PDF file', e })
         console.error('Failure during downloading PDF file:', e)
       }
+      this.$emit('loading', false)
     },
   },
   beforeDestroy() {

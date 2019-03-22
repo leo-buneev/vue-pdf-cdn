@@ -42,6 +42,12 @@ export default {
 
 - `src` - URL of PDF file to load and display
 
+### Events
+
+- `@status` - triggered when status update happens (library initialized, pdf downloaded, etc.). Provides string describing status.
+- `@error` - triggered when error happens. Provides error message.
+- `@loading` - triggered when loading status changes. Provides boolean (true/false).
+
 ## Author
 
 **vue-pdf-cli**. Released under the [MIT](./LICENSE) License.

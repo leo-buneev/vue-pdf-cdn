@@ -58,30 +58,47 @@ export default {
         this.$emit('status', 'Downloading document...')
         const loadingTask = window.pdfjsLib.getDocument(this.src)
         this._pdf = await loadingTask.promise
+        this._pageNum = 1
+        await this.renderPage(this._pageNum)
         this.$emit('status', 'Rendering document...')
-        const pageNumber = 1
-        this._page = await this._pdf.getPage(pageNumber)
-
-        const desiredWidth = this.$el.clientWidth
-        const viewport = this._page.getViewport(1)
-
-        const scale = desiredWidth / viewport.width
-        const scaledViewport = this._page.getViewport(scale)
-
-        const canvas = this.$refs.canvas
-        canvas.height = scaledViewport.height
-        canvas.width = scaledViewport.width
-        const renderTask = this._page.render({
-          canvasContext: canvas.getContext('2d'),
-          viewport: scaledViewport,
-        })
-        await renderTask.promise
         this.$emit('status', 'Render complete!')
       } catch (e) {
         this.$emit('error', { message: 'Error during displaying PDF file', e })
         console.error('Failure during downloading PDF file:', e)
       }
       this.$emit('loading', false)
+    },
+    async renderPage(pageNum) {
+      this._page = await this._pdf.getPage(pageNum)
+
+      const desiredWidth = this.$el.clientWidth
+      const viewport = this._page.getViewport(1)
+
+      const scale = desiredWidth / viewport.width
+      const scaledViewport = this._page.getViewport(scale)
+
+      const canvas = this.$refs.canvas
+      canvas.height = scaledViewport.height
+      canvas.width = scaledViewport.width
+      const renderTask = this._page.render({
+        canvasContext: canvas.getContext('2d'),
+        viewport: scaledViewport,
+      })
+      await renderTask.promise
+    },
+    async prevPage() {
+      if (this._pageNum <= 1) {
+        return
+      }
+      this._pageNum--
+      await this.renderPage(this._pageNum)
+    },
+    async nextPage() {
+      if (this._pageNum >= this._pdf.numPages) {
+        return
+      }
+      this._pageNum++
+      await this.renderPage(this._pageNum)
     },
   },
   beforeDestroy() {

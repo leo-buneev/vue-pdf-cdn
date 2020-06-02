@@ -72,10 +72,10 @@ export default {
       this._page = await this._pdf.getPage(pageNum)
 
       const desiredWidth = this.$el.clientWidth
-      const viewport = this._page.getViewport(1)
+      const viewport = this._page.getViewport({ scale: 1 })
 
       const scale = desiredWidth / viewport.width
-      const scaledViewport = this._page.getViewport(scale)
+      const scaledViewport = this._page.getViewport({ scale })
 
       const canvas = this.$refs.canvas
       canvas.height = scaledViewport.height

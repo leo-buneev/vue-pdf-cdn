@@ -32,7 +32,7 @@ export default {
       try {
         this.$emit('status', 'Initializing PDF viewer...')
         this.$emit('loading', true)
-        await externalScriptLoader.ensureScriptIsLoaded('https://unpkg.com/pdfjs-dist@latest/build/pdf.min.js')
+        await externalScriptLoader.ensureScriptIsLoaded('https://unpkg.com/pdfjs-dist@2.4.456/build/pdf.min.js')
         this.loadFile()
       } catch (e) {
         this.$emit('error', { message: 'Error during initializing PDF viewer', e })

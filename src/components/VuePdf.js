@@ -32,7 +32,7 @@ export default {
       try {
         this.$emit('status', 'Initializing PDF viewer...')
         this.$emit('loading', true)
-        await externalScriptLoader.ensureScriptIsLoaded('https://unpkg.com/pdfjs-dist@2.4.456/build/pdf.min.js')
+        await externalScriptLoader.ensureScriptIsLoaded(getDefaultCdnUrl())
         this.loadFile()
       } catch (e) {
         this.$emit('error', { message: 'Error during initializing PDF viewer', e })
@@ -109,4 +109,9 @@ export default {
       h('canvas', { style: { display: 'block', width: '100%' }, ref: 'canvas' }),
     ])
   },
+}
+
+function getDefaultCdnUrl() {
+  if (!window.ReadableStream) return 'https://unpkg.com/pdfjs-dist@2.4.456/es5/build/pdf.min.js' // version for older browsers
+  return 'https://unpkg.com/pdfjs-dist@2.4.456/build/pdf.min.js'
 }

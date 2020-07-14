@@ -112,6 +112,6 @@ export default {
 }
 
 function getDefaultCdnUrl() {
-  if (!window.ReadableStream) return 'https://unpkg.com/pdfjs-dist@2.4.456/es5/build/pdf.min.js' // version for older browsers
+  if (!window.ReadableStream) return 'https://unpkg.com/pdfjs-dist@2.4.456/es5/build/pdf.js' // version for older browsers
   return 'https://unpkg.com/pdfjs-dist@2.4.456/build/pdf.min.js'
 }

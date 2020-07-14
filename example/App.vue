@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <input v-model='src' style='width:100%' />
-    <pdf class='editor' :src='src' />
+    <input v-model="src" style="width:100%" />
+    <pdf class="editor" :src="src" />
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   },
   data() {
     return {
-      src: 'https://prague.test.tyrecheck.com/API/api/Report/1cea522c-be61-41b3-818a-833c3c1ba5a5',
+      src: require('!file-loader?name=[name].[ext]!./assets/sample.pdf'),
     }
   },
 }

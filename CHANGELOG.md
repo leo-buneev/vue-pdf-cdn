@@ -6,10 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.9] - 2020-10-22
+## [1.0.10] - 2020-10-22
 
 ### Changed
 
+- Upgraded @vue/cli to v4
 - Updated dependencies
 
 ## [1.0.0] - 2019-03-22

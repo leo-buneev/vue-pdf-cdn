@@ -1,6 +1,6 @@
 {
   "name": "vue-pdf-cdn",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": false,
   "description": "Lightweight PDF viewer for Vue.js using CDN",
   "author": "leo-buneev <buneev.leonid@gmail.com>",
@@ -18,8 +18,8 @@
     "dist/*.js",
     "src/*"
   ],
-  "dependencies": {
-    "vue": "^3.2.26"
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
@@ -32,7 +32,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.2.0",
     "file-loader": "^6.2.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "vue": "^3.0.0"
   },
   "keywords": [
     "vue",

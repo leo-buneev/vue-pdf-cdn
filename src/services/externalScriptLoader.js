@@ -19,7 +19,7 @@ export default {
         resolve()
       }
 
-      scriptElement.onerror = err => {
+      scriptElement.onerror = (err) => {
         if (installTimeoutId) window.clearTimeout(installTimeoutId)
         promisesMap[url] = null
         reject(err)

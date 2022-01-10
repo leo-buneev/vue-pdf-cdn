@@ -19,17 +19,15 @@
     "src/*"
   ],
   "dependencies": {
-    "@babel/eslint-parser": "^7.16.5",
-    "core-js": "^3.20.2",
-    "vue": "^3.2.26",
-    "vue-resize-sensor": "^2.0.0"
+    "vue": "^3.2.26"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/eslint-parser": "^7.16.5",
     "@vue/cli-plugin-babel": "~5.0.0-rc.1",
     "@vue/cli-plugin-eslint": "~5.0.0-rc.1",
     "@vue/cli-service": "~5.0.0-rc.1",
     "@vue/eslint-config-prettier": "^7.0.0",
-    "babel-core": "7.0.0-bridge.0",
     "eslint": "^8.6.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.2.0",

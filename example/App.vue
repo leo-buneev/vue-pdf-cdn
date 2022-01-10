@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
+  <div>
     <input v-model="src" style="width:100%" />
-    <pdf class="editor" :src="src" />
+    <!-- <div @click="$refs.pdfEditor.prevPage()">Prev</div>
+    <div @click="$refs.pdfEditor.nextPage()">Next</div> -->
+    <pdf ref="pdfEditor" class="editor" :src="src" />
   </div>
 </template>
 
@@ -15,7 +17,7 @@ export default {
   },
   data() {
     return {
-      src: require('!file-loader?name=[name].[ext]!./assets/sample.pdf'),
+      src: require('!file-loader?name=[name].[ext]!./assets/sample.pdf').default,
     }
   },
 }

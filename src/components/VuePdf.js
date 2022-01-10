@@ -1,3 +1,4 @@
+import { h } from 'vue'
 import externalScriptLoader from '@/services/externalScriptLoader.js'
 
 const isModernBrowser = !!window.ReadableStream
@@ -106,8 +107,8 @@ export default {
   beforeDestroy() {
     this.cleanup()
   },
-  render(h) {
-    return h('div', { attrs: { style: 'position: relative; overflow:auto;' } }, [
+  render() {
+    return h('div', { style: 'position: relative; overflow:auto;' }, [
       h('canvas', { style: { display: 'block', width: '100%' }, ref: 'canvas' }),
     ])
   },

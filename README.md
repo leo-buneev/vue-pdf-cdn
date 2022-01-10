@@ -1,6 +1,6 @@
 # vue-pdf-cdn
 
-**Note: master branch (v 2.*) is for Vue3 only. For usage with Vue2, install v1.* - `npm install vue-pdf-cdn^1.0.0`**
+**Note: master branch (v 2.\*) is for Vue3 only. For usage with Vue2, install v1.\* - `npm install vue-pdf-cdn^1.0.0`**
 
 [PDF.js](https://mozilla.github.io/pdf.js/) is very advanced JS library for parsing and displaying PDF files by Mozilla. This project aims to provide simple and lightweight Vue.js component, that downloads library files lazily from cdn with minimal setup.
 

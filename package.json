@@ -1,6 +1,6 @@
 {
   "name": "vue-pdf-cdn",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "private": false,
   "description": "Lightweight PDF viewer for Vue.js using CDN",
   "author": "leo-buneev <buneev.leonid@gmail.com>",

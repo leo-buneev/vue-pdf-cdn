@@ -104,7 +104,7 @@ export default {
       await this.renderPage(this._pageNum)
     },
   },
-  beforeDestroy() {
+  beforeUnmount() {
     this.cleanup()
   },
   render() {

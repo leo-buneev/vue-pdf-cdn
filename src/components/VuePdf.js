@@ -36,6 +36,7 @@ export default {
         this.$emit('status', 'Initializing PDF viewer...')
         this.$emit('loading', true)
         await externalScriptLoader.ensureScriptIsLoaded(getDefaultCdnUrl())
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc = getDefaultCdnUrl('pdf.worker')
         this.loadFile()
       } catch (e) {
         this.$emit('error', { message: 'Error during initializing PDF viewer', e })
@@ -114,7 +115,8 @@ export default {
   },
 }
 
-function getDefaultCdnUrl() {
-  if (!isModernBrowser) return 'https://unpkg.com/pdfjs-dist@2.4.456/es5/build/pdf.js' // version for older browsers
-  return 'https://unpkg.com/pdfjs-dist@2.4.456/build/pdf.min.js'
+function getDefaultCdnUrl(filename) {
+  if (!filename) filename = 'pdf'
+  if (!isModernBrowser) return `https://unpkg.com/pdfjs-dist@2.12.313/es5/build/${filename}.js` // version for older browsers
+  return `https://unpkg.com/pdfjs-dist@2.12.313/build/${filename}.min.js`
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input v-model="src" style="width:100%" />
+    <input v-model="src" style="width: 100%" />
     <!-- <div @click="$refs.pdfEditor.prevPage()">Prev</div>
     <div @click="$refs.pdfEditor.nextPage()">Next</div> -->
     <pdf ref="pdfEditor" class="editor" :src="src" />

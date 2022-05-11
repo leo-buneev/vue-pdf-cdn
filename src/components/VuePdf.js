@@ -1,7 +1,6 @@
 import { h } from 'vue'
 import externalScriptLoader from '@/services/externalScriptLoader.js'
 
-const isModernBrowser = !!window.ReadableStream
 export default {
   name: 'VuePdf',
   props: {
@@ -117,6 +116,5 @@ export default {
 
 function getDefaultCdnUrl(filename) {
   if (!filename) filename = 'pdf'
-  if (!isModernBrowser) return `https://unpkg.com/pdfjs-dist@2.12.313/es5/build/${filename}.js` // version for older browsers
-  return `https://unpkg.com/pdfjs-dist@2.12.313/build/${filename}.min.js`
+  return `https://unpkg.com/pdfjs-dist@2.12.313/legacy/build/${filename}.min.js` // version for older browsers
 }

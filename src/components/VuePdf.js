@@ -84,7 +84,7 @@ export default {
       canvas.height = scaledViewport.height
       canvas.width = scaledViewport.width
       const renderTask = this._page.render({
-        canvasContext: canvas.getContext('2d'),
+        canvasContext: canvas.getContext('2d', { alpha: false }),
         viewport: scaledViewport,
       })
       await renderTask.promise
